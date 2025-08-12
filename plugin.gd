@@ -27,7 +27,9 @@ func _handle_scene_copy():
 	if selected_nodes.is_empty():
 		print("No nodes selected")
 		return
-
+		
+	change_unique_names_with_undo(selected_nodes)
+	
 	var code_lines = []
 	for node in selected_nodes:
 		if not is_instance_valid(node):
@@ -37,17 +39,29 @@ func _handle_scene_copy():
 		var node_type = node.get_class()
 		var node_path = _get_node_path(node)
 
-		code_lines.append("@onready var %s: %s = %s" % [var_name, node_type, node_path])
+		code_lines.append("@onready var %s: %s = %%%s" % [var_name, node_type, node.name])
 		
 	if code_lines.size() > 0:
 		copyTo = "\n".join(code_lines)
-		copyTo = copyTo.replace('"','')
 	else:
 		print("No valid nodes to process")
 	
 	await get_tree().create_timer(0.1).timeout # Without this timer, it won't work
 	DisplayServer.clipboard_set(copyTo)
 	print("✅ Copied %d @onready variables to clipboard!" % code_lines.size())
+
+func change_unique_names_with_undo(nodes: Array[Node]):
+	var undo_redo = EditorInterface.get_editor_undo_redo()
+
+	var action_name = "Unique Names Enabled" 
+	undo_redo.create_action(action_name)
+
+	for node in nodes:
+		if node != null and is_instance_valid(node) and node.unique_name_in_owner == false:
+			undo_redo.add_do_method(node, "set_unique_name_in_owner", true)
+			undo_redo.add_undo_method(node, "set_unique_name_in_owner", false)
+
+	undo_redo.commit_action()
 	
 func _handle_filesystem_copy():
 	var fs_dock = EditorInterface.get_file_system_dock()
