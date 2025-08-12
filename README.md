@@ -6,6 +6,7 @@ Godot Engine Helper shortcuts for users of External Script Editor like VSCode or
 
 Just download and enable the addon, than you can select multiple nodes and press Ctrl + Shift + C to copy NODES as @onready VARIABLES.
 When you press the shortcut key, they will change to unique_name if it is not unique_name.
+
 And you can select multiple files and press Ctrl + Shift + R to copy as preload variables.
 Like This:
 
