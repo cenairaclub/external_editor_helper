@@ -1,0 +1,55 @@
+# Godot 4+ specific files
+.godot/
+.import/
+
+# Godot 3 specific files
+.import/
+export.cfg
+export_presets.cfg
+
+# Monobuild (C# only)
+.mono/
+data_*/
+mono_crash.*.json
+
+# System/OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build files
+builds/
+*.pck
+*.exe
+*.dmg
+*.app
+*.apk
+*.ipa
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Cache files
+*.cache
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Git specific
+*.orig

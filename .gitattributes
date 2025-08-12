@@ -1,0 +1,71 @@
+# Normalize line endings for all files that Git considers text files
+* text=auto eol=lf
+
+# Asset Library - Only include the addons folder when downloading
+/** export-ignore
+/addons !export-ignore
+/addons/** !export-ignore
+
+# Keep essential files in export
+/LICENSE !export-ignore
+/README.md !export-ignore
+
+# Godot specific files
+*.tscn text diff=unity
+*.tres text diff=unity
+*.gd text diff=csharp
+*.cs text diff=csharp
+*.cfg text
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+
+# Audio
+*.wav binary
+*.mp3 binary
+*.ogg binary
+*.flac binary
+
+# Fonts
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+
+# 3D models
+*.blend binary
+*.fbx binary
+*.obj binary
+*.dae binary
+*.glb binary
+*.gltf binary
+
+# Archives
+*.zip binary
+*.rar binary
+*.7z binary
+*.tar binary
+*.gz binary
+
+# Executables
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# Documentation files
+*.md text
+*.txt text
+*.rst text
+
+# Configuration files
+*.json text
+*.xml text
+*.yaml text
+*.yml text
+*.toml text
